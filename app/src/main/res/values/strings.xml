@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Eyepetizer</string>
+    <string name="app_name_zh">开  眼</string>
+    <string name="splash_intro_zh">每日精选视频推介，让你大开眼界。</string>
+    <string name="splash_intro_en">Daily appetizers for your eyes，Bon eyepetit</string>
 </resources>
