@@ -21,9 +21,11 @@
 
     <!--Activity动画-->
     <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <!-- -100  0  100 屏幕原点0 0 <- 100%从左进入  -100% -> 0从右边进入 -->
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_left</item>
-        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_right</item>
+
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
 </resources>
