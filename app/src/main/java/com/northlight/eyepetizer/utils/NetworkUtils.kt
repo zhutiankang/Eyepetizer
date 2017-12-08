@@ -13,11 +13,11 @@ object NetworkUtils {
 
     fun isNetConneted(context: Context): Boolean {
         val connectManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val newtworkInfo: NetworkInfo? = connectManager.activeNetworkInfo
-        if (newtworkInfo == null) {
-            return false
+        val networkInfo: NetworkInfo? = connectManager.activeNetworkInfo
+        return if (networkInfo == null) {
+            false
         } else {
-            return newtworkInfo.isAvailable && newtworkInfo.isConnected
+            networkInfo.isAvailable && networkInfo.isConnected
         }
     }
 
@@ -27,10 +27,10 @@ object NetworkUtils {
         }
         val connectManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo: NetworkInfo? = connectManager.getNetworkInfo(typeMobile)
-        if (networkInfo == null) {
-            return false
+        return if (networkInfo == null) {
+            false
         } else {
-            return networkInfo.isAvailable && networkInfo.isConnected
+            networkInfo.isAvailable && networkInfo.isConnected
         }
     }
 

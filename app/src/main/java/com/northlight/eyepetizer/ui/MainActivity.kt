@@ -4,13 +4,16 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.KeyEvent
 import android.view.View
+import android.widget.Toast
 import com.gyf.barlibrary.ImmersionBar
 import com.northlight.eyepetizer.R
 import com.northlight.eyepetizer.ui.fragment.FindFragment
 import com.northlight.eyepetizer.ui.fragment.HomeFragment
 import com.northlight.eyepetizer.ui.fragment.HotFragment
 import com.northlight.eyepetizer.ui.fragment.MineFragment
+import com.northlight.eyepetizer.utils.showToast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -25,6 +28,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var findFragment: FindFragment? = null
     private var hotFragment: HotFragment? = null
     private var mineFragment: MineFragment? = null
+
+    private val WAIT_TIME: Long = 2000
+    private var mExitTime: Long = 0
+    private var toast: Toast? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -182,4 +189,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rb_mine.setTextColor(resources.getColor(R.color.gray))
     }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis().minus(mExitTime) <= WAIT_TIME) {
+                finish()
+                toast!!.cancel()
+            } else {
+                mExitTime = System.currentTimeMillis()
+                toast = showToast("双击退出")
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 }
