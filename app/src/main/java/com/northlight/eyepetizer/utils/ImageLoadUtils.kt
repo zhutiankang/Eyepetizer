@@ -14,8 +14,8 @@ import com.northlight.eyepetizer.R
 class ImageLoadUtils {
 
     companion object {
-        fun display(context: Context,imageView:ImageView?,url:String){
-            if (imageView == null){
+        fun display(context: Context, imageView: ImageView?, url: String) {
+            if (imageView == null) {
                 throw IllegalArgumentException("argument error imageView is null")
             }
             Glide.with(context)

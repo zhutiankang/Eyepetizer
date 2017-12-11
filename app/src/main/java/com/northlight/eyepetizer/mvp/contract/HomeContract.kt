@@ -16,7 +16,7 @@ interface HomeContract {
         fun requestData()
     }
 
-    interface View : BaseView<Presenter> {
+    interface View : BaseView {
         fun setData(homeBean: HomeBean)
     }
 

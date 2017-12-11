@@ -14,10 +14,14 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * date   : 2017/12/7 10:33
  */
 
-class HomeFragment : BaseFragment(), HomeContract.View {
+class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
 
-    var mPresenter: HomePresenter? = null
-    var mAdapter: HomeAdapter? = null
+    override fun getPresenter(): HomePresenter {
+        return HomePresenter(context, this)
+    }
+
+
+    private var mAdapter: HomeAdapter? = null
     private var mList = ArrayList<HomeBean.IssueListBean.ItemListBean>()
 
     override fun setData(homeBean: HomeBean) {
@@ -36,7 +40,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun initView() {
-        mPresenter = HomePresenter(context, this)
         mPresenter?.start()
         rv_home.layoutManager = LinearLayoutManager(context)
         mAdapter = HomeAdapter(context, mList)

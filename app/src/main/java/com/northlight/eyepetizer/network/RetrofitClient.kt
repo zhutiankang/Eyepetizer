@@ -17,13 +17,13 @@ import java.util.concurrent.TimeUnit
  * date   : 2017/12/8 09:10
  */
 class RetrofitClient private constructor(context: Context) {
-    var httpCacheDirectory: File? = null
-    var cache: Cache? = null
+    private var httpCacheDirectory: File? = null
+    private var cache: Cache? = null
 
-    var okHttpClient: OkHttpClient? = null
-    var retrofit: Retrofit? = null
+    private var okHttpClient: OkHttpClient? = null
+    private var retrofit: Retrofit? = null
 
-    val TIME_OUT: Long = 20
+    private val TIME_OUT: Long = 20
 
     init {
         //缓存地址
@@ -63,9 +63,9 @@ class RetrofitClient private constructor(context: Context) {
         var instance: RetrofitClient? = null
 
         fun getInstance(context: Context): RetrofitClient {
-            if (instance == null){
-                synchronized(RetrofitClient::class){
-                    if (instance == null){
+            if (instance == null) {
+                synchronized(RetrofitClient::class) {
+                    if (instance == null) {
                         instance = RetrofitClient(context)
                     }
                 }

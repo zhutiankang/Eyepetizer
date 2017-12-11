@@ -12,7 +12,8 @@ import android.net.NetworkInfo
 object NetworkUtils {
 
     fun isNetConneted(context: Context): Boolean {
-        val connectManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo: NetworkInfo? = connectManager.activeNetworkInfo
         return if (networkInfo == null) {
             false
@@ -25,7 +26,8 @@ object NetworkUtils {
         if (!isNetConneted(context)) {
             return false
         }
-        val connectManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo: NetworkInfo? = connectManager.getNetworkInfo(typeMobile)
         return if (networkInfo == null) {
             false

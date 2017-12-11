@@ -20,12 +20,14 @@ data class HomeBean(var nextPageUrl: String?, var nextPublishTime: Long,
                                 var actionUrl: String?, var adTrack: Any?,
                                 var isShade: Boolean, var label: Any?,
                                 var labelList: Any?, var header: Any?,
-                                var category:String?,var duration:Long?,
-                                var playUrl: String,var cover: CoverBean?,
-                                var author: AuthorBean?, var releaseTime : Long?){
+                                var category: String?, var duration: Long?,
+                                var playUrl: String, var cover: CoverBean?,
+                                var author: AuthorBean?, var releaseTime: Long?) {
 
-                data class CoverBean(var feed : String?,var detail : String?,
-                                     var blurred : String?,var sharing : String?,var homepage:String?)
+                data class CoverBean(var feed: String?, var detail: String?,
+                                     var blurred: String?, var sharing: String?,
+                                     var homepage: String?)
+
                 data class AuthorBean(var icon: String)
             }
         }

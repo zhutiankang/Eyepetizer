@@ -98,7 +98,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getToday(): String {
-        val list = arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+        val list = arrayOf("Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday")
         val date = Date()
         val calendar: Calendar = Calendar.getInstance()
         calendar.time = date

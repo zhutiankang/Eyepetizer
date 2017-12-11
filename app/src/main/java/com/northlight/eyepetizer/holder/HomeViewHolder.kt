@@ -16,8 +16,8 @@ import com.northlight.eyepetizer.utils.ImageLoadUtils
  * tips   :
  * date   : 2017/12/11 16:50
  */
-class HomeViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolder(itemView) {
-    private var context: Context? = null
+class HomeViewHolder(itemView: View?, var context: Context) :
+        RecyclerView.ViewHolder(itemView) {
 
     private var tv_title: TextView? = null
     private var tv_detail: TextView? = null
@@ -25,13 +25,13 @@ class HomeViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolde
     private var iv_user: ImageView? = null
 
     init {
-        this.context = context
         iv_photo = itemView?.findViewById(R.id.iv_photo)
         iv_user = itemView?.findViewById(R.id.iv_user)
         tv_detail = itemView?.findViewById(R.id.tv_detail)
         tv_title = itemView?.findViewById(R.id.tv_title)
 
-        tv_title?.typeface = Typeface.createFromAsset(context.assets, "fonts/FZLanTingHeiS-DB1-GB-Regular.TTF")
+        tv_title?.typeface = Typeface.createFromAsset(context.assets,
+                "fonts/FZLanTingHeiS-DB1-GB-Regular.TTF")
     }
 
     @SuppressLint("SetTextI18n")
@@ -40,7 +40,7 @@ class HomeViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolde
 
         val category = bean?.data?.category
         val minute = bean?.data?.duration?.div(60) as Long
-        val second = bean?.data?.duration?.minus((minute.times(60))) as Long
+        val second = bean.data?.duration?.minus((minute.times(60))) as Long
         val realMinute: String
         val realSecond: String
         realMinute = if (minute < 10) {
@@ -55,18 +55,18 @@ class HomeViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolde
         }
         tv_detail?.text = "发布于 $category / $realMinute:$realSecond"
 
-        val photo = bean?.data?.cover?.feed
-        ImageLoadUtils.display(context!!, iv_photo, photo as String)
+        val photo = bean.data?.cover?.feed
+        ImageLoadUtils.display(context, iv_photo, photo as String)
 
 
-        val author = bean?.data?.author
+        val author = bean.data?.author
         if (author != null) {
-            ImageLoadUtils.display(context!!, iv_user, author.icon)
+            ImageLoadUtils.display(context, iv_user, author.icon)
         } else {
             iv_user?.visibility = View.GONE
         }
 
-        val playUrl = bean?.data?.playUrl
+//        val playUrl = bean.data?.playUrl
 //        val time = bean?.data?.releaseTime
 //        val calendar: Calendar = Calendar.getInstance()
 //        calendar.time = Date(time!!)
