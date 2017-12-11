@@ -58,13 +58,20 @@ class RetrofitClient private constructor(context: Context) {
                 .build()
     }
 
-    private object Holder{
-        val instance : RetrofitClient
-            set(context: Context, baseUrl: String) = RetrofitClient(context,baseUrl)
-    }
-
     companion object {
-        fun getInstance(context: Context, baseUrl: String) = Holder.instance
+        @Volatile
+        var instance: RetrofitClient? = null
+
+        fun getInstance(context: Context): RetrofitClient {
+            if (instance == null){
+                synchronized(RetrofitClient::class){
+                    if (instance == null){
+                        instance = RetrofitClient(context)
+                    }
+                }
+            }
+            return instance!!
+        }
     }
 
     fun <T> create(service: Class<T>?): T? {
