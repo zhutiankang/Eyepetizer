@@ -7,5 +7,5 @@ package com.northlight.eyepetizer.mvp.base
  */
 interface BaseView<in T> {
 
-    fun setPresenter(presenter: T)
+//    fun setPresenter(presenter: T)
 }

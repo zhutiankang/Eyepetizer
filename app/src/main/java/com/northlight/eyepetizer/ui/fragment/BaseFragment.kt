@@ -24,7 +24,11 @@ abstract class BaseFragment : Fragment() {
         if (rootView == null) {
             rootView = inflater?.inflate(getLayoutResources(), container, false)
         }
-        initView()
         return rootView
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
     }
 }
