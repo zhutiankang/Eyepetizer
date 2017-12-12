@@ -14,7 +14,7 @@ import com.northlight.eyepetizer.mvp.model.bean.HomeBean
  * date   : 2017/12/11 12:17
  */
 class HomeAdapter(var context: Context,
-                  var list: MutableList<HomeBean.IssueListBean.ItemListBean>?) :
+                  private var list: MutableList<HomeBean.IssueListBean.ItemListBean>?) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var inflater: LayoutInflater? = null

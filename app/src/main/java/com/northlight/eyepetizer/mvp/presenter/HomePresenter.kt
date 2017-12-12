@@ -28,7 +28,7 @@ class HomePresenter(private var mContext: Context, private var mView: HomeContra
         //两种调用方式都可以 下一种更好，更kotlin  context作为参数的时候
         //val observable: Observable<HomeBean>? = mModel.loadData(mContext!!, true, 0)
         val observable: Observable<HomeBean>? =
-                mContext.let { mModel.loadData(it, true, 0) }
+                mContext.let { mModel.loadData(it, true, "0") }
 
         observable?.applySchedulers()?.subscribe { homeBean: HomeBean ->
             //获取数据的时候过滤
@@ -39,7 +39,11 @@ class HomePresenter(private var mContext: Context, private var mView: HomeContra
         }
     }
 
-//    fun moreData() {
-//
-//    }
+    fun moreData(data: String?) {
+        val observable: Observable<HomeBean>? =
+                mContext.let { mModel.loadData(it, false, data) }
+        observable?.applySchedulers()?.subscribe { homeBean: HomeBean ->
+            mView.setData(homeBean)
+        }
+    }
 }

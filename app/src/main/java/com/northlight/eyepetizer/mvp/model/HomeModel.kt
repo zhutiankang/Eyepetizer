@@ -13,14 +13,14 @@ import io.reactivex.Observable
  */
 class HomeModel {
 
-    fun loadData(context: Context, isFirst: Boolean, date: Long): Observable<HomeBean>? {
+    fun loadData(context: Context, isFirst: Boolean, data: String?): Observable<HomeBean>? {
         val retrofitClient = RetrofitClient.getInstance(context)
         val apiService = retrofitClient.create(ApiService::class.java)
 
         return when (isFirst) {
             true -> apiService?.getHomeData()
 
-            false -> apiService?.getHomeMoreData(date.toString(), "2")
+            false -> apiService?.getHomeMoreData(data.toString(), "2")
         }
     }
 }

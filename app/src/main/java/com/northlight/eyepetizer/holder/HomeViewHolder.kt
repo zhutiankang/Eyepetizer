@@ -67,6 +67,9 @@ class HomeViewHolder(itemView: View?, var context: Context) :
         }
 
 //        val playUrl = bean.data?.playUrl
+        itemView.setOnClickListener {
+            //跳转视频详情页
+        }
 //        val time = bean?.data?.releaseTime
 //        val calendar: Calendar = Calendar.getInstance()
 //        calendar.time = Date(time!!)
