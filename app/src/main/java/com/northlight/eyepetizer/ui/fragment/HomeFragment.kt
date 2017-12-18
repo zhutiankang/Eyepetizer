@@ -81,8 +81,8 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View,
                 super.onScrollStateChanged(recyclerView, newState)
 
                 val layoutManager = rv_home.layoutManager as LinearLayoutManager
-                val lastPostion = layoutManager.findLastVisibleItemPosition()
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastPostion == mList.size - 1){
+                val lastPosition = layoutManager.findLastVisibleItemPosition()
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastPosition == mList.size - 1){
                     if (data != null){
                         mPresenter?.moreData(data)
                     }
